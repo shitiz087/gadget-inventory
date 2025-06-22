@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.api.post(API.LOGIN, this.form.value).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/gadgets']);
       },
       error: (err) => {
         alert(err.error?.message || 'Invalid credentials');

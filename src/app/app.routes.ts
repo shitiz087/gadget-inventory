@@ -12,20 +12,14 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     canActivate: [authGuard],
-    // children: [
-    //   {
-    //     path: 'dashboard',
-    //     canActivate: [authGuard],
-    //     loadComponent: () =>
-    //       import('./dashboard/dashboard.component').then((m) => m.DashboardComponent),
-    //   },
-    //   {
-    //     path: 'gadgets',
-    //     canActivate: [authGuard],
-    //     loadComponent: () =>
-    //       import('./gadgets/gadgets.component').then((m) => m.GadgetsComponent),
-    //   },
-    // ],
+    children: [
+      {
+        path: 'gadgets',
+        canActivate: [authGuard],
+        loadComponent: () =>
+          import('./gadgets/gadgets.component').then((m) => m.GadgetsComponent),
+      },
+    ],
   },
 
   { path: '**', redirectTo: 'login' },

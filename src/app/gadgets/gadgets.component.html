@@ -1,0 +1,38 @@
+<div class="p-4 bg-white shadow rounded-lg">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-semibold">Gadgets</h2>
+    <button mat-raised-button color="primary" (click)="openCreateDialog()">
+      +Add Gadget
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z2 w-full">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let gadget">{{ gadget.id }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let gadget">{{ gadget.name }}</td>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let gadget">₹{{ gadget.price }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let gadget">{{ gadget.category }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
+</div>
