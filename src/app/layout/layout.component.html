@@ -1,0 +1,63 @@
+<mat-sidenav-container class="h-screen">
+  <!-- Sidebar -->
+  <mat-sidenav #drawer mode="over" class="p-0 w-64">
+    <div class="h-full bg-gray-900 text-white flex flex-col">
+      <!-- Sidebar header -->
+      <div
+        class="h-16 bg-gray-950 flex items-center justify-center text-lg font-semibold"
+      >
+        📱 Gadget Store
+      </div>
+
+      <!-- Navigation links -->
+      <mat-nav-list class="flex-1 p-2">
+        <a
+          mat-list-item
+          routerLink="/dashboard"
+          routerLinkActive="active-link"
+          class="rounded-lg px-3 py-2 hover:bg-gray-800 transition flex items-center gap-2"
+        >
+          <mat-icon>dashboard</mat-icon>
+          <span class="text-white">Dashboard</span>
+        </a>
+
+        <a
+          mat-list-item
+          routerLink="/gadgets"
+          routerLinkActive="active-link"
+          class="rounded-lg px-3 py-2 hover:bg-gray-800 transition flex items-center gap-2"
+        >
+          <mat-icon>devices</mat-icon>
+          <span class="text-white">Gadgets</span>
+        </a>
+      </mat-nav-list>
+
+      <!-- Optional bottom links like Logout -->
+      <div class="p-3 border-t border-gray-700">
+        <a
+          mat-list-item
+          class="rounded-lg px-3 py-2 hover:bg-red-600/80 transition flex items-center gap-2"
+        >
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content class="bg-gray-100 h-screen flex flex-col">
+    <mat-toolbar color="primary" class="sticky top-0 z-10 shadow">
+      <!-- Menu button to toggle sidebar -->
+      <button mat-icon-button class="lg:hidden mr-3" (click)="toggleDrawer()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Gadget Inventory</span>
+    </mat-toolbar>
+
+    <!-- Page Content -->
+    <div class="p-6 flex-1 overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
