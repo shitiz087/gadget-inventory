@@ -9,7 +9,7 @@ import { CreateGadgetDialogComponent } from './create-gadget-dialog/create-gadge
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-gadgets',
@@ -39,7 +39,11 @@ export class GadgetsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private api: ApiService, private dialog: MatDialog) {}
+  constructor(
+    private api: ApiService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchGadgets();
@@ -96,7 +100,10 @@ export class GadgetsComponent implements OnInit {
   }
 
   isAllSelected(): boolean {
-    return this.selection.size === this.dataSource.data.length;
+    return (
+      this.selection.size > 0 &&
+      this.selection.size === this.dataSource.data.length
+    );
   }
 
   deleteSelected() {
@@ -112,5 +119,9 @@ export class GadgetsComponent implements OnInit {
   bulkUpdate() {
     const ids = Array.from(this.selection);
     console.log('Bulk update (to implement):', ids);
+  }
+
+  viewGadget(row: any) {
+    this.router.navigate(['/gadgets', row.id]);
   }
 }

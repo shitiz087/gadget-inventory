@@ -12,12 +12,14 @@
         <mat-checkbox
           (change)="toggleAll($event)"
           [checked]="isAllSelected()"
+          (click)="$event.stopPropagation()"
         ></mat-checkbox>
       </th>
       <td mat-cell *matCellDef="let row">
         <mat-checkbox
           (change)="toggleSelection(row)"
           [checked]="selection.has(row.id)"
+          (click)="$event.stopPropagation()"
         ></mat-checkbox>
       </td>
     </ng-container>
@@ -44,10 +46,18 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-icon-button color="primary" (click)="editGadget(row)">
+        <button
+          mat-icon-button
+          color="primary"
+          (click)="editGadget(row); $event.stopPropagation()"
+        >
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" (click)="deleteGadget(row)">
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteGadget(row); $event.stopPropagation()"
+        >
           <mat-icon>delete</mat-icon>
         </button>
       </td>
@@ -57,7 +67,7 @@
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"
-      [routerLink]="['/gadgets', row.id]"
+      (click)="viewGadget(row)"
       class="cursor-pointer hover:bg-gray-100"
     ></tr>
   </table>

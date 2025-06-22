@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
@@ -22,8 +22,14 @@ import { RouterModule } from '@angular/router';
 })
 export class LayoutComponent {
   @ViewChild('drawer') drawer!: MatSidenav;
+  constructor(private router: Router) {}
 
   toggleDrawer() {
     this.drawer?.toggle();
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/']);
   }
 }

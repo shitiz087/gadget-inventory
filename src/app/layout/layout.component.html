@@ -13,16 +13,6 @@
       <mat-nav-list class="flex-1 p-2">
         <a
           mat-list-item
-          routerLink="/dashboard"
-          routerLinkActive="active-link"
-          class="rounded-lg px-3 py-2 hover:bg-gray-800 transition flex items-center gap-2"
-        >
-          <mat-icon class="text-white">dashboard</mat-icon>
-          <span class="text-white">Dashboard</span>
-        </a>
-
-        <a
-          mat-list-item
           routerLink="/gadgets"
           routerLinkActive="active-link"
           class="rounded-lg px-3 py-2 hover:bg-gray-800 transition flex items-center gap-2"
@@ -33,7 +23,7 @@
       </mat-nav-list>
 
       <!-- Optional bottom links like Logout -->
-      <div class="p-3 border-t border-gray-700">
+      <div class="p-3 border-t border-gray-700" (click)="logout()">
         <a
           mat-list-item
           class="rounded-lg px-3 py-2 hover:bg-red-600/80 transition flex items-center gap-2"
