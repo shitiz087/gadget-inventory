@@ -9,6 +9,7 @@ import { CreateGadgetDialogComponent } from './create-gadget-dialog/create-gadge
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-gadgets',
@@ -20,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatCheckboxModule,
     MatIconModule,
     MatButtonModule,
+    RouterModule,
   ],
   templateUrl: './gadgets.component.html',
   styleUrl: './gadgets.component.css',

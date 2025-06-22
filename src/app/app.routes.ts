@@ -19,6 +19,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./gadgets/gadgets.component').then((m) => m.GadgetsComponent),
       },
+      {
+        path: 'gadgets/:id',
+        loadComponent: () =>
+          import('./gadgets/gadget-detail/gadget-detail.component').then(
+            (m) => m.GadgetDetailComponent
+          ),
+      },
     ],
   },
 
